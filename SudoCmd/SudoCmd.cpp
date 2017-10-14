@@ -1,4 +1,4 @@
-// SudoCmd.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// SudoCmd.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -26,6 +26,10 @@ int main(int argc, char* argv[])
     catch (combination_conflict &e) {
         e.what();
     }
+	catch (FileNotExist &e)
+	{
+		e.what();
+	}
 
     HMODULE CoreDLL = LoadLibrary(TEXT("Core/SoduCore.dll"));
     if (!CoreDLL) {

@@ -88,5 +88,20 @@ private:
 	int upper;
 	int lower;
 };
-
+//文件不存在
+class FileNotExist :public std::exception
+{
+public:
+	FileNotExist(char *filename)
+	{
+		this->filename = filename;
+	}
+	void what()
+	{
+		std::cout << filename << " is not existed" << std::endl;
+		exit(1);
+	}
+private:
+	char *filename;
+};
 #endif EH_H_

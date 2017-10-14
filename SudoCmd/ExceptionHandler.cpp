@@ -2,6 +2,7 @@
 #include "ExceptionHandler.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 /*
 require:	req空间已经申请好，且地址上的值都初始化为了0
 */
@@ -170,6 +171,11 @@ void paraHandle(int argc, char *argv[], request *req) {
 		if (strcmp(s, kS_Solve) == 0)
 		{
 			char *filepath = argv[i];
+			std::fstream file(filepath, std::ios::in);
+			if (!file)
+			{
+				throw FileNotExist(filepath);
+			}
 			req->filepath = new std::string(filepath);
 			if (s_flag)
 				throw format_err();
